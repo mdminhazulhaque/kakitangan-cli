@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
+from .const import KakitanganConst
 from .config import KakitanganConfig
 import datetime
 
@@ -29,6 +30,7 @@ END = "end"
 TITLE = "title"
 HOVER = "hover"
 FULL_DAY = "full_day"
+LEAVE_TYPE = "leave_type"
 
 class KakitanganFilter:
     @staticmethod
@@ -37,15 +39,19 @@ class KakitanganFilter:
             yield start + datetime.timedelta(n)
 
     @staticmethod
-    def _extract_calendar(raw, leave=False):
+    def _extract_calendar(raw, myleave=False, colleagues=False):
         calendar = {}
         for item in raw:
             start = datetime.datetime.strptime(item[START], FMT)
             end = datetime.datetime.strptime(item[END], FMT)
             for dateobj in KakitanganFilter._daterange(start, end):
                 date = dateobj.strftime(FMT)
-                if leave and (item[HOVER][FULL_DAY] in ["(AM)", "(PM)"]):
+                if myleave and (item[HOVER][FULL_DAY] in ["(AM)", "(PM)"]):
                     item[TITLE] = item[TITLE] + " " + item[HOVER][FULL_DAY]
+                if colleagues:
+                    #print(item[TITLE] + " " + item[HOVER][LEAVE_TYPE])
+                    if "(" not in item[TITLE]:
+                        item[TITLE] = item[TITLE] + " (" + item[HOVER][LEAVE_TYPE] + ")"
                 try:
                     calendar[date].append(item[TITLE])
                 except:
@@ -55,12 +61,18 @@ class KakitanganFilter:
 
     @staticmethod
     def filter_calendar(calendartype, all=False, today=False, since=False,
-                        untill=False, custom=False, leave=False):
+                        untill=False, custom=False):
         raw = KakitanganConfig.load(calendartype)
         if raw == False:
             print("Calendar not updated")
             return
-        calendar = KakitanganFilter._extract_calendar(raw, leave)
+        
+        myleave, colleagues = False, False
+        if calendartype == KakitanganConst.CALENDAR:
+            myleave = True
+        elif calendartype == KakitanganConst.COLLEAGUES:
+            colleagues = True
+        calendar = KakitanganFilter._extract_calendar(raw, myleave, colleagues)
         
         today_date = datetime.datetime.now()        
         untill_date = datetime.datetime.strptime(untill, FMT) if untill else None

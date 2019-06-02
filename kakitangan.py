@@ -118,7 +118,7 @@ def colleagues(all, today, since, untill, date):
 @click.option('--all', '-a', is_flag=True, default=False, help="Shows past leaves also")
 def myleaves(all):
     data = KakitanganFilter.filter_calendar(KakitanganConst.CALENDAR,
-                                            all=all, leave=True)
+                                            all=all)
     if type(data) == list:
         print(tabulate.tabulate(data))
     else:
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     app()
     
 # TODO
-# 'https://app.kakitangan.com/updates/check?csrfmiddlewaretoken=d01uYmyENPfyNV3dDgy3dPcNAOw3Kj6K'
+# 'https://app.kakitangan.com/updates/check'
 # 'https://app.kakitangan.com/leave/query_employees'
 # 'https://app.kakitangan.com/leave/view_application?q=leave_history&start_date=27%2F04%2F2019&end_date=26%2F07%2F2019&_=1558924055891'
 # 'https://app.kakitangan.com/leave/view_application?q=replacement_credit&start_date=27%2F04%2F2019&end_date=26%2F07%2F2019&_=1558924055892'
