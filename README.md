@@ -23,7 +23,7 @@ As written in Python3, the following modules are needed.
 
 # Security?
 
-I know. I know. You are damn worried about the security of your Kakitangan account. At least I am not going to store your password in plaintext like Google or Facebook did. This CLI app asks for your password once, tries to get a authorization token from Kakitangan API and saves the following things on your disk. It even asks for your password via stdin and hides the prompt so no trace is left in your bash history.
+I know. I know. You are damn worried about the security of your Kakitangan account. At least I am not going to store your password in plaintext like Google or Facebook did. <span style="color:red">This CLI app asks for your password once, tries to get a authorization token from Kakitangan API and ONLY saves the following things on your disk. It even asks for your password via stdin and hides the prompt so no trace is left in your bash history.</span>
 
 * username
 * sessionid
