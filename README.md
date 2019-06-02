@@ -37,7 +37,7 @@ There is no way to get your password recovered from this 4 values.
 * How does this app work?
     * The same way Kakitangan's web app works, using GET and POST requests to their API endpoints. Most of then returns JSON so I did not have to use parse HTML.
 * Is there any API documentation for Kakitangan?
-    * AFAIK, no. I had to tracce their API calls via Chrome DevTools and figured out by myself how they work.
+    * AFAIK, no. I had to trace their API calls via Chrome DevTools and figured out by myself how they work.
 * Is this CLI app safe to use?
     * This app saves nothing but the sessionid and authorization token, same as your web browser does. It never stores the password.
 * My question is not answered.
