@@ -1,0 +1,6 @@
+appdirs==1.4.3
+Click==7.0
+DateTime==4.3
+pytz==2019.1
+tabulate==0.8.3
+zope.interface==4.6.0
