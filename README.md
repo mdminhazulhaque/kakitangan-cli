@@ -138,24 +138,24 @@ By default, it will show leaves AFTER current date. You can see all leaves with 
 ```
 $ kakitangan.py colleagues
 ----------  --------------
-2019-06-03  Abdul Doe
-            Alice Begum
-2019-06-04  Abdul Doe
-            Charlie Ahmed
-            Foo Bin Bar
-            Alice Begum
-2019-06-10  Foo Bin Bar
-            Bob Mia
-2019-06-11  Bob Mia
-2019-06-12  Bob Mia
-2019-06-13  Bob Mia
-2019-06-14  Clara Khatun
-            Bob Mia
-2019-06-15  Clara Khatun
-2019-06-16  Clara Khatun
-2019-06-17  Clara Khatun
-            Bob Mia
-2019-06-18  Bob Mia
+2019-06-03  Abdul Doe (Annual)
+            Alice Begum (Marriage Leave)
+2019-06-04  Abdul Doe (CarryForward)
+            Charlie Ahmed (Annual)
+            Foo Bin Bar (Annual)
+            Alice Begum (Sick)
+2019-06-10  Foo Bin Bar (Sick)
+            Bob Mia (Birthday Leave)
+2019-06-11  Bob Mia (Sick)
+2019-06-12  Bob Mia (Sick)
+2019-06-13  Bob Mia (Annual)
+2019-06-14  Clara Khatun (Annual)
+            Bob Mia (Annual)
+2019-06-15  Clara Khatun (CarryForward)
+2019-06-16  Clara Khatun (CarryForward)
+2019-06-17  Clara Khatun (Annual)
+            Bob Mia (Replacement)
+2019-06-18  Bob Mia (Annual)
 ----------  --------------
 ```
 
@@ -164,8 +164,8 @@ It is possible to see who are on leave on a specific date. Just pass the date in
 ```
 $ kakitangan.py colleagues -d 2019-06-10
 ----------  -----------
-2019-06-10  Foo Bin Bar
-            Bob Mia
+2019-06-10  Foo Bin Bar (Sick)
+            Bob Mia (Birthday Leave)
 ----------  -----------
 ```
 
@@ -174,10 +174,10 @@ You might want to filter colleagues within specific date range. Just use the `-s
 ```
 $ kakitangan.py colleagues -s 2019-06-15 -u 2019-06-17
 ----------  ------------
-2019-06-15  Clara Khatun
-2019-06-16  Clara Khatun
-2019-06-17  Clara Khatun
-            Bob Mia
+2019-06-15  Clara Khatun (Annual)
+2019-06-16  Clara Khatun (Annual)
+2019-06-17  Clara Khatun (Annual)
+            Bob Mia (Annual)
 ----------  ------------
 ```
 

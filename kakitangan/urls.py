@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 __author__ = "Md. Minhazul Haque"
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __license__ = "GPLv3"
 
 """
