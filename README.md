@@ -1,5 +1,3 @@
-![Kakitangan Logo](https://www.kakitangan.com/img/layout/logo.svg)
-
 [Kakitangan](https://www.kakitangan.com/platform.html) is an online HR Software for Malaysian businesses that helps handle payroll, claims, benefits, leave and more.
 
 You can easily use the web version, or if you prefer, they have both [Android](https://play.google.com/store/apps/details?id=com.kakitangan&hl=en) and [iOS](https://itunes.apple.com/my/app/kakitangan/id1358869881) version too.
@@ -19,9 +17,9 @@ You can ask me why I made this CLI version although they have nice web and mobil
 
 As written in Python3, the following modules are needed.
 
-- [*] appdirs
-- [*] click
-- [*] tabulate
+- [x] appdirs
+- [x] click
+- [x] tabulate
 
 # Security?
 
