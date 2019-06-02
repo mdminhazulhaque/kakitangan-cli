@@ -15,7 +15,7 @@ You can ask me why I made this CLI version although they have nice web and mobil
 
 # Requirments
 
-As written in Python3, the following modules are needed.
+As written in Python3, the following modules are needed. Install using `pip3 install -r requirments.txt`
 
 - [x] appdirs
 - [x] click
