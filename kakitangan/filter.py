@@ -39,42 +39,31 @@ class KakitanganFilter:
             yield start + datetime.timedelta(n)
 
     @staticmethod
-    def _extract_calendar(raw, myleave=False, colleagues=False):
+    def extract_calendar(data, calendartype):
         calendar = {}
-        for item in raw:
+        for item in data:
             start = datetime.datetime.strptime(item[START], FMT)
             end = datetime.datetime.strptime(item[END], FMT)
             for dateobj in KakitanganFilter._daterange(start, end):
                 date = dateobj.strftime(FMT)
-                if myleave and (item[HOVER][FULL_DAY] in ["(AM)", "(PM)"]):
+                if calendartype == KakitanganConst.CALENDAR and (item[HOVER][FULL_DAY] in ["(AM)", "(PM)"]):
                     item[TITLE] = item[TITLE] + " " + item[HOVER][FULL_DAY]
-                if colleagues:
-                    #print(item[TITLE] + " " + item[HOVER][LEAVE_TYPE])
+                if calendartype == KakitanganConst.COLLEAGUES:
                     if "(" not in item[TITLE]:
                         item[TITLE] = item[TITLE] + " (" + item[HOVER][LEAVE_TYPE] + ")"
                 try:
                     calendar[date].append(item[TITLE])
                 except:
                     calendar[date] = []
-                    calendar[date].append(item[TITLE])   
+                    calendar[date].append(item[TITLE])
         return calendar
 
     @staticmethod
     def filter_calendar(calendartype, all=False, today=False, since=False,
                         untill=False, custom=False):
-        raw = KakitanganConfig.load(calendartype)
-        if raw == False:
-            print("Calendar not updated")
-            return
+        calendar = KakitanganConfig.load(calendartype)
         
-        myleave, colleagues = False, False
-        if calendartype == KakitanganConst.CALENDAR:
-            myleave = True
-        elif calendartype == KakitanganConst.COLLEAGUES:
-            colleagues = True
-        calendar = KakitanganFilter._extract_calendar(raw, myleave, colleagues)
-        
-        today_date = datetime.datetime.now()        
+        today_date = datetime.datetime.now().replace(hour=0, minute=0, second=0)
         untill_date = datetime.datetime.strptime(untill, FMT) if untill else None
         since_date = datetime.datetime.strptime(since, FMT) if since else None
         custom_date = datetime.datetime.strptime(custom, FMT) if custom else None
@@ -85,10 +74,10 @@ class KakitanganFilter:
             entry = [date, "\n".join(calendar[date])]
             this_date = datetime.datetime.strptime(date, FMT)
             
-            if since and since_date > this_date:
+            if since and (since_date - this_date).days > 0:
                 continue
                 
-            if not all and today_date > this_date:
+            if not since and not all and (today_date - this_date).days > 0:
                 continue
             
             if today and (today_date - this_date).days == 0:
