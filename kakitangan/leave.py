@@ -23,11 +23,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 from .urls import KakitanganURLS
 from .headers import KakitanganHeaders
 from .config import KakitanganConfig
-from .filter import KakitanganFilter
+from .filter import KakitanganFilter, FMT
 from .const import KakitanganConst
 
 import requests
 import json
+import datetime
 
 class KakitanganLeave():
     @staticmethod
@@ -65,16 +66,17 @@ class KakitanganLeave():
                 'action': calendartype,
                 'employee': '',
                 'csrfmiddlewaretoken': cookies['csrftoken'],
-                'start': '2019-04-28',
-                'end': '2019-06-09'
+                'start': '2015-01-01',
+                'end': '2020-12-31'
             }
-            response = requests.post('https://app.kakitangan.com/leave/leave/calendar',
+            response = requests.post(KakitanganURLS.CALENDAR,
                                      headers=KakitanganHeaders.urlencoded_json(),
                                      cookies=cookies,
                                      data=data)
             
             if response.status_code == 200:
-                KakitanganConfig.save(response.json(), calendartype)
+                calendar = KakitanganFilter.extract_calendar(response.json(), calendartype)
+                KakitanganConfig.save(calendar, calendartype)
                 saved += 1
         if saved == len(calendartypes):
             return True
