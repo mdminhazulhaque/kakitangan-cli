@@ -4,14 +4,14 @@ You can easily use the web version, or if you prefer, they have both [Android](h
 
 # Why CLI Version?
 
-You can ask me why I made this CLI version although they have nice web and mobile version. Well, people like me prefers CLI than GUI. Also I wanted to learn how Python module works. So I decided to turn this into a pet project.
+You can ask me why I made this CLI version although they have a nice web and mobile version. Well, people like me prefer CLI than GUI. Also, I wanted to learn how Python module works. So I decided to turn this into a pet project.
 
 # Who Can Be Benefited From This
 
 * If you are a project manager and need to frequently check who is on leave next week
 * If you are a manager, you can get details who are on leave on a specific day before arranging any session
 * If you are a simple developer, you can sniff on your colleagues and surprise them
-* If you are a human resource person, you can get statistics on who makes the best use of leave policies
+* If you are a human resource person, you can get statistics on who makes the best use leave policies
 
 # Requirments
 
@@ -23,29 +23,29 @@ As written in Python3, the following modules are needed. Install using `pip3 ins
 
 # Security?
 
-I know. I know. You are damn worried about the security of your Kakitangan account. At least I am not going to store your password in plaintext like Google or Facebook did. <span style="color:red">This CLI app asks for your password once, tries to get a authorization token from Kakitangan API and ONLY saves the following things on your disk. It even asks for your password via stdin and hides the prompt so no trace is left in your bash history.</span>
+I know. I know. You are damn worried about the security of your Kakitangan account. At least I am not going to store your password in plaintext as Google or Facebook did. <span style="color:red">This CLI app asks for your password once, tries to get an authorization token from Kakitangan API and ONLY saves the following things on your disk. It even asks for your password via stdin and hides the prompt so no trace is left in your bash history.</span>
 
 * username
 * sessionid
 * authorizationtoken
 * csrftoken
 
-There is no way to get your password recovered from this 4 values.
+There is no way to get your password recovered from these 4 values.
 
 # FAQ
 
-* How does this app work?
-    * The same way Kakitangan's web app works, using GET and POST requests to their API endpoints. Most of then returns JSON so I did not have to use parse HTML.
+There is no way to get your pa* How does this app work?
+    * The same way Kakitangan's web app works, using GET and POST requests to their API endpoints. Most of then return JSON so I did not have to use parse HTML.
 * Is there any API documentation for Kakitangan?
     * AFAIK, no. I had to trace their API calls via Chrome DevTools and figured out by myself how they work.
 * Is this CLI app safe to use?
-    * This app saves nothing but the sessionid and authorization token, same as your web browser does. It never stores the password.
+    * This app saves nothing but the `sessionid` and `authorizationtoken`, same as your web browser does. It never stores the password.
 * My question is not answered.
-    * Send me email or post a new issue in this repository.
-
+    * Send me an email or post a new issue in this repository.
+ 
 # How To Use It?
 
-I am working hard to distribute it via `setuptools`. Before that, you can download the repo and execute the `kakitangan.py` as main file. The default commands are given below.
+I am currently working to distribute this via `setuptools`. Before that, you can download the repo and execute the `kakitangan.py` as the main file. The default commands are given below.
 
 ```
 $ kakitangan.py --help
@@ -65,7 +65,7 @@ Commands:
   myleavestat  The user's leave statistics
 ```
 
-First, you have to login, right? You have to pass the username/email via `-u` option. The password will be prompted and will be invisible as you type it. The password can also be passed via `-p` option but I tell you not to do so. Your password will be stored in `.bash_history` which would be a serious security issue.
+First, you have to log in, right? You have to pass the username/email via `-u` option. The password will be prompted and will be invisible as you type it. The password can also be passed via `-p` option but I tell you not to do so. Your password will be stored in `.bash_history` which would be a serious security issue.
 
 ```
 $ kakitangan.py login -u john.doe@dream.job
@@ -76,7 +76,7 @@ $ kakitangan.py login -u john.doe@dream.job -u 1234567890
 Login success
 ```
 
-If your password is correct and you have internet connection, you are supposed to see the `Login success` message. Use the `aboutme` option to see your basic info.
+If your password is correct and you have an internet connection, you are supposed to see the `Login success` message. Use the `aboutme` option to see your basic info.
 
 ```
 $ kakitangan.py aboutme
@@ -133,7 +133,7 @@ Options:
   --help             Show this message and exit.
 ```
 
-By default, it will show leaves AFTER current date. You can see all leaves with `-a` parameter.
+By default, it will show leaves AFTER the current date. You can see all leaves with `-a` parameter.
 
 ```
 $ kakitangan.py colleagues
@@ -258,7 +258,7 @@ Exam/Study Leave         5/5
 -----------------------  -----------------
 ```
 
-Going back home? Don't want anyone sneak into your Kakitangan account? You can logout anytime. It's easy.
+Going back home? Don't want anyone to sneak into your Kakitangan account? You can log out anytime. It's easy.
 
 ```
 $ kakitangan.py logout
@@ -268,8 +268,8 @@ Logged out
 
 # TODO/BUGS
 
-- [ ] Cases when internet is down is not handled yet
+- [ ] Cases, when the internet is down, is not handled yet
 - [ ] Need to add logging feature to track file read/write events
 - [ ] Need to add `Apply for Leave` feature
-- [ ] Need to improve `loadleaves` command (remove manual invokation)
-- [ ] You found one? Post as issue or send PR.
+- [ ] Need to improve `loadleaves` command (remove manual call)
+- [ ] You found one? Post as an issue or send PR.
