@@ -72,7 +72,7 @@ $ kakitangan.py login -u john.doe@dream.job
 Password: **********
 Login success
 
-$ kakitangan.py login -u john.doe@dream.job -u 1234567890
+$ kakitangan.py login -u john.doe@dream.job -p 1234567890
 Login success
 ```
 
