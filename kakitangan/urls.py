@@ -5,8 +5,8 @@ __version__ = "0.2.0"
 __license__ = "GPLv3"
 
 """
-Copyright (c) 2018 Md. Minhazul Haque
-This file is part of mdminhazulhaque/bd-mrp-api
+Copyright (c) 2020 Md. Minhazul Haque
+This file is part of mdminhazulhaque/kakitangan-cli
 (see https://github.com/mdminhazulhaque/banglalionwimaxapi).
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,3 +29,4 @@ class KakitanganURLS:
     CLAIMS = 'https://app.kakitangan.com/claims/'
     CLAIMS_SETTINGS = 'https://app.kakitangan.com/api/v1/claims/settings/subscribed'
     CALENDAR = 'https://app.kakitangan.com/leave/leave/calendar'
+    BIRTHDAYS = 'https://app.kakitangan.com/benefits/birthdays.json'

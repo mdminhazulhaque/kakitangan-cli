@@ -268,6 +268,7 @@ Logged out
 
 # TODO/BUGS
 
+- [*] Show birthdays of colleagues
 - [ ] Cases, when the internet is down, is not handled yet
 - [ ] Need to add logging feature to track file read/write events
 - [ ] Need to add `Apply for Leave` feature

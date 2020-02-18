@@ -5,8 +5,8 @@ __version__ = "0.2.0"
 __license__ = "GPLv3"
 
 """
-Copyright (c) 2018 Md. Minhazul Haque
-This file is part of mdminhazulhaque/bd-mrp-api
+Copyright (c) 2020 Md. Minhazul Haque
+This file is part of mdminhazulhaque/kakitangan-cli
 (see https://github.com/mdminhazulhaque/banglalionwimaxapi).
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@ from kakitangan.const import KakitanganConst
 from kakitangan.filter import KakitanganFilter
 from kakitangan.leave import KakitanganLeave
 from kakitangan.aboutme import KakitanganAboutMe
+from kakitangan.birthdays import KakitanganBirthdays
 
 @click.group()
 def app():
@@ -124,11 +125,16 @@ def myleaves(all):
     else:
         print("An error occured")
 
+@app.command(help="Shows colleagues' birthdays")
+def birthdays():
+    data = KakitanganBirthdays()
+    if type(data) == list:        
+        print(tabulate.tabulate(data))
+    else:
+        print("An error occured")
+
 if __name__ == "__main__":
     app()
     
-# TODO
-# 'https://app.kakitangan.com/updates/check'
-# 'https://app.kakitangan.com/leave/query_employees'
 # 'https://app.kakitangan.com/leave/view_application?q=leave_history&start_date=27%2F04%2F2019&end_date=26%2F07%2F2019&_=1558924055891'
 # 'https://app.kakitangan.com/leave/view_application?q=replacement_credit&start_date=27%2F04%2F2019&end_date=26%2F07%2F2019&_=1558924055892'

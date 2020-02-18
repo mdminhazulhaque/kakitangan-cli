@@ -5,8 +5,8 @@ __version__ = "0.2.0"
 __license__ = "GPLv3"
 
 """
-Copyright (c) 2018 Md. Minhazul Haque
-This file is part of mdminhazulhaque/bd-mrp-api
+Copyright (c) 2020 Md. Minhazul Haque
+This file is part of mdminhazulhaque/kakitangan-cli
 (see https://github.com/mdminhazulhaque/banglalionwimaxapi).
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ def KakitanganAboutMe():
             ["Passport Number", j["passport"]],
             ["Employee ID", j["employee_id"]],
             ["Joined", j["joined_time"]],
-            ["Manager", j["manager"]],
+            ["Manager", j["manager"]["official_full_name"]],
             ["Position", j["position"]],
             ["Department", j["department"]],
             ["Location", j["location"]]
